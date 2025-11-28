@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}update-task{% endblock %}
+
+{% block cssJsLinks %}
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='') }}"> -->
+    <script src="{{ url_for('static', filename='js/textareaControl.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<h1>update Tasks</h1>
+
+<form action="/update/{{thisTask.id}}" method="POST">
+
+    <div class="container fluid">
+        <div class="mb-3 mx-3 fluid">
+            <label class="form-label" for="fTitle">Task Title</label>
+            <input type="text" class="form-control" name="fTitle" id="fTitle" value="{{thisTask.title}}"
+                aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3 mx-3">
+            <label class="form-label" for="fDescription">Task Description</label>
+            <textarea type="text" class="form-control" name="fDescription" id="fDescription"
+                value="{{thisTask.description}}"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+{% endblock %}
