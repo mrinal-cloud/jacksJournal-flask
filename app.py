@@ -1,12 +1,18 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-
+import os
 
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:mrinalDB@localhost:7996/jacksJournals'
+
+# Use the environment variable for deployment, or fall back to a local SQLite/Postgres URL for development
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'SQLALCHEMY_DATABASE_URI', 
+    'postgresql://postgres:mrinalDB@localhost:7996/jacksJournals'  # This is your local development fallback
+)
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
