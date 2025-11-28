@@ -10,10 +10,8 @@ import sys
 app = Flask(__name__)
 
 # Use the environment variable for deployment, or fall back to a local SQLite/Postgres URL for development
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'Render_DATABASE_URI', 
-    'postgresql://postgres:mrinalDB@localhost:7996/jacksJournals'  # This is your local development fallback
-)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('Render_DATABASE_URI', 'postgresql://postgres:mrinalDB@localhost:7996/jacksJournals') 
+# The second is your local development fallback
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -64,6 +62,13 @@ class Task(db.Model):
     def __repr__(self) -> str:
         return f"{self.sno} - {self.title}"
 
+
+# This ensures tables are created/present on EVERY startup
+# ----------------------------------------------------
+with app.app_context():
+    # This call attempts to create tables that don't exist. 
+    # It does nothing if the tables are already present.
+    db.create_all()
 
 
 @app.route('/', methods=['GET', 'POST'])
