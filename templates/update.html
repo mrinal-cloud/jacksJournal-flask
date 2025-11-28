@@ -2,8 +2,8 @@
 {% block title %}update-task{% endblock %}
 
 {% block cssJsLinks %}
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='') }}"> -->
-    <script src="{{ url_for('static', filename='js/textareaControl.js') }}"></script>
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='') }}"> -->
+<script src="{{ url_for('static', filename='js/textareaControl.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -20,8 +20,8 @@
         </div>
         <div class="mb-3 mx-3">
             <label class="form-label" for="fDescription">Task Description</label>
-            <textarea type="text" class="form-control" name="fDescription" id="fDescription"
-                value="{{thisTask.description}}"></textarea>
+            <textarea type="text" class="form-control" name="fDescription" id="fDescription">
+                 {{thisTask.description}}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
