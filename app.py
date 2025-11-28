@@ -30,11 +30,11 @@ db = SQLAlchemy(app)
 #         sys.exit(0)
 # --- END TEMPORARY BLOCK ---
 
-# @app.shell_context_processor
-# def make_shell_context():
-#     # This automatically loads these variables when you run 'flask shell'
-#     # return {'db': db, 'User': User, 'app': app}
-#     return {'app': app, 'db': db}
+@app.shell_context_processor
+def make_shell_context():
+    # This automatically loads these variables when you run 'flask shell'
+    # return {'db': db, 'User': User, 'app': app}
+    return {'app': app, 'db': db}
 
 
 class User(db.Model):
