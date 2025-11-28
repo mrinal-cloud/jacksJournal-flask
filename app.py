@@ -21,13 +21,13 @@ db = SQLAlchemy(app)
 # --- TEMPORARY DATABASE SETUP BLOCK ---
 
 # Check if the script was run with the special 'db_init' argument
-if 'db_init' in sys.argv:
-    with app.app_context():
-        print("Running one-time database setup (db.create_all())...")
-        db.create_all()
-        print("Database setup complete. Exiting script.")
-        # Exit with success code 0 so the deployment doesn't get stuck
-        sys.exit(0)
+# if 'db_init' in sys.argv:
+#     with app.app_context():
+#         print("Running one-time database setup (db.create_all())...")
+#         db.create_all()
+#         print("Database setup complete. Exiting script.")
+#         # Exit with success code 0 so the deployment doesn't get stuck
+#         sys.exit(0)
 # --- END TEMPORARY BLOCK ---
 
 # @app.shell_context_processor
