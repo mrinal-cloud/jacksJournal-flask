@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Use the environment variable for deployment, or fall back to a local SQLite/Postgres URL for development
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'SQLALCHEMY_DATABASE_URI', 
+    'Render_DATABASE_URI', 
     'postgresql://postgres:mrinalDB@localhost:7996/jacksJournals'  # This is your local development fallback
 )
 
