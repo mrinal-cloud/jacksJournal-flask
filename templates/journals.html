@@ -20,11 +20,15 @@
         <div class="mb-3 mx-3 fluid">
             <label class="form-label" for="fTitle">Task Title</label>
             <input type="text" class="form-control" name="fTitle" id="fTitle" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <div id="emailHelp" class="form-text">Keep the title as short, concise, and crisp as possible</div>
         </div>
         <div class="mb-3 mx-3">
             <label class="form-label" for="fDescription">Task Description</label>
             <textarea type="text" class="form-control" name="fDescription" id="fDescription"></textarea>
+        </div>
+        <div class="mb-3 mx-3">
+            <label class="form-label" for="fCategory">Task Category</label>
+            <input type="text" class="form-control" name="fCategory" id="fCategory">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -46,9 +50,10 @@
             <tr>
                 <th style="width: 5%;" scope="col">Sl No</th>
                 <th style="width: 15%;" scope="col">Title</th>
-                <th style="width: 55%;" scope="col">Description</th>
+                <th style="width: 50%;" scope="col">Description</th>
+                <th style="width: 7%;" scope="col">Category</th>
                 <th style="width: 10%;" scope="col">date of create</th>
-                <th style="width: 15%;" scope="col">Actions</th>
+                <th style="width: 13%;" scope="col">Actions</th>
             </tr>
         </thead>
 
@@ -59,6 +64,7 @@
                 <th scope="row">{{loop.index}}</th>
                 <td>{{t.title}}</td>
                 <td>{{t.description}}</td>
+                <td>{{t.category}}</td>
                 <td>{{t.date_created}}</td>
                 <td>
                     <a href="/update/{{t.id}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>

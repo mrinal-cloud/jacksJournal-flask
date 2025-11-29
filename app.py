@@ -57,6 +57,7 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String, nullable=True)
+    category = db.Column(db.Integer, nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self) -> str:
@@ -81,7 +82,8 @@ def showAll():
     if request.method=='POST':
         title = request.form['fTitle']
         desc = request.form['fDescription']
-        task = Task(title=title, description=desc)
+        catg = request.form['fCategory']
+        task = Task(title=title, description=desc, category=catg)
         db.session.add(task)
         db.session.commit()
         
@@ -94,9 +96,12 @@ def updateTask(taskId):
     if request.method == 'POST':
         title=request.form['fTitle']
         desc=request.form['fDescription']
+        catg=request.form['fCategory']
+
         uTask=Task.query.filter_by(id=taskId).first()
         uTask.title=title
         uTask.description=desc
+        uTask.category=catg
         # db.session.add(uTask)
         db.session.commit()
         return redirect("/")

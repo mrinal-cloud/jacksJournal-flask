@@ -16,11 +16,15 @@
             <label class="form-label" for="fTitle">Task Title</label>
             <input type="text" class="form-control" name="fTitle" id="fTitle" value="{{thisTask.title}}"
                 aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <div id="emailHelp" class="form-text">Keep the title as short, concise, and crisp as possible</div>
         </div>
         <div class="mb-3 mx-3">
             <label class="form-label" for="fDescription">Task Description</label>
             <textarea type="text" class="form-control" name="fDescription" id="fDescription">{{thisTask.description}}</textarea>
+        </div>
+        <div class="mb-3 mx-3 fluid">
+            <label class="form-label" for="fCategory">Task Category</label>
+            <input type="text" class="form-control" name="fCategory" id="fCategory" value="{{thisTask.category}}">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
