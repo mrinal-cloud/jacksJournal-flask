@@ -1,0 +1,48 @@
+{% extends 'navbar.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block cssJsLinks %}
+
+{% endblock %}
+
+
+
+{% block afterNav %}
+
+<!-- discusn container starts here -->
+<div class="container my-4" >
+    <h2 class="text-center my-4">Overview of the Things</h2>
+
+
+    {% if allTasks|length != 0 %}
+    <div class="row my-4">
+    {% for item in allTasks %}
+        <!-- Fetch all the discussions and use a loop to iterate through discussions -->
+        <div class="col-md-3 mx-0 my-2 ">
+            <div class="card pad" style="width: 18rem;" id="ques">
+                <a href="/show/{{item.id}}">
+                    <img src="static/imgages/slider-1.jpg" class="card-img-top" alt="image for this discussion"> 
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.title}}</h5>
+                    </a>
+                        <p class="card-text">{{item.description}}</p>
+                    </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <div class="alert alert-dark container fluid col-md-6 my-3" role="alert">
+        No anything found. Add your first now!
+    </div>
+    {% endif %}
+
+
+
+
+
+</div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'navbar.html' %}
 {% block title %}update-task{% endblock %}
 
 {% block cssJsLinks %}
@@ -6,7 +6,7 @@
 <script src="{{ url_for('static', filename='js/textareaControl.js') }}"></script>
 {% endblock %}
 
-{% block body %}
+{% block afterNav %}
 <h1>update Tasks</h1>
 
 <form action="/update/{{thisTask.id}}" method="POST">
@@ -20,8 +20,7 @@
         </div>
         <div class="mb-3 mx-3">
             <label class="form-label" for="fDescription">Task Description</label>
-            <textarea type="text" class="form-control" name="fDescription" id="fDescription">
-                 {{thisTask.description}}</textarea>
+            <textarea type="text" class="form-control" name="fDescription" id="fDescription">{{thisTask.description}}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

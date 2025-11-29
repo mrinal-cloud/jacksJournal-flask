@@ -60,7 +60,7 @@ class Task(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self) -> str:
-        return f"{self.sno} - {self.title}"
+        return f"{self.id} - {self.title}"
 
 
 # This ensures tables are created/present on EVERY startup
@@ -71,8 +71,13 @@ with app.app_context():
     db.create_all()
 
 
-@app.route('/', methods=['GET', 'POST'])
-def Home():
+@app.route('/')
+def home(): 
+    tasks = Task.query.all()
+    return render_template('home.html', allTasks=tasks)   
+
+@app.route('/show', methods=['GET', 'POST'])
+def showAll():
     if request.method=='POST':
         title = request.form['fTitle']
         desc = request.form['fDescription']
@@ -81,15 +86,7 @@ def Home():
         db.session.commit()
         
     tasks = Task.query.all() 
-    return render_template('index.html', allTasks=tasks)
-    
-
-
-@app.route('/show')
-def products():
-    tasks = Task.query.all()
-    print(tasks)
-    return 'this is products page'
+    return render_template('journals.html', allTasks=tasks)    
 
 @app.route('/update/<int:taskId>', methods=['GET', 'POST'])
 def updateTask(taskId):
@@ -118,7 +115,11 @@ def deleteTask(taskId):
 
 
 
-
+@app.route('/show/<int:taskId>')
+def showThis(taskId):
+    thisTask=Task.query.filter_by(id=taskId).first()
+   
+    return render_template('details.html', Task=thisTask)    
 
 
 
