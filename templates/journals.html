@@ -28,7 +28,18 @@
         </div>
         <div class="mb-3 mx-3">
             <label class="form-label" for="fCategory">Task Category</label>
-            <input type="text" class="form-control" name="fCategory" id="fCategory">
+            <!-- <input type="text" class="form-control" name="fCategory" id="fCategory"> -->
+
+            <select class="form-select" aria-label="Default select example" name="fCategory" id="fCategory">
+                <option selected>Select your task category from here</option>
+                <option value="1">Just start With</option>
+                <option value="2">Core</option>
+                <option value="3">Naive</option>
+                <option value="4">Go Out</option>
+                <option value="5">Pure Space</option>
+                <option value="6">Box Out</option>
+
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

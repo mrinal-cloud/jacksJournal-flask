@@ -22,10 +22,23 @@
             <label class="form-label" for="fDescription">Task Description</label>
             <textarea type="text" class="form-control" name="fDescription" id="fDescription">{{thisTask.description}}</textarea>
         </div>
-        <div class="mb-3 mx-3 fluid">
-            <label class="form-label" for="fCategory">Task Category</label>
-            <input type="text" class="form-control" name="fCategory" id="fCategory" value="{{thisTask.category}}">
-        </div>
+        <!-- <div class="mb-3 mx-3 fluid">
+            <label class="form-label" for="fCategory0">Task Category</label>
+            <input type="text" class="form-control" name="fCategory0" id="fCategory0" value="{{thisTask.category}}">
+        </div> -->
+
+        <label class="form-label" for="fCategory">Task Category</label>
+
+            <select class="form-select" aria-label="Default select example" name="fCategory" id="fCategory">
+                <option selected>{{thisTask.category}}__Update your task category from here</option>
+                <option value="1">Just start With</option>
+                <option value="2">Core</option>
+                <option value="3">Naive</option>
+                <option value="4">Go Out</option>
+                <option value="5">Pure Space</option>
+                <option value="6">Box Out</option>
+
+            </select>
 
         <button type="submit" class="btn btn-primary">Submit</button>
 </form>
